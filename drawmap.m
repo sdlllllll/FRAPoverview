@@ -15,6 +15,8 @@ plot(input);
 legend1 = legend(string(roiCo(:,7)));
 set(legend1,...
     'Position',[0.907779875494835 0.660119047619048 0.114285714285714 0.26547619047619]);
+close;
 %%
 saveas(fig, sprintf('result/%s/%s/%s.fig', date, experiment, name));
+disp('Map saved.');
 end

@@ -45,5 +45,6 @@ end
 %%
 mkdir(sprintf('result/%s/%s', date, experiment))
 save(sprintf('result/%s/%s/data.mat', date, experiment),...
-    'imgs', 'roiimage');
+    'imgs', 'roiimage', '-v7.3', '-nocompression');
+disp(sprintf('Get original image finished.'));
 end

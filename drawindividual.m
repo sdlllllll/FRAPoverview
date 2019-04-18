@@ -17,5 +17,7 @@ for r = 1:size(data,2)
         0.114285714285714 0.26547619047619]);
     saveas(fig, sprintf('result/%s/%s/roi%d_c%d.fig',...
         date, experiment, r, channel));
+    close;
 end
+disp('Individual figure saved.');
 end

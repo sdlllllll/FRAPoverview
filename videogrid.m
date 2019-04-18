@@ -27,4 +27,5 @@ bigimg = [
 for m = 1:size(bigimg,4)
 imwrite(bigimg(:,:,:,m),sprintf('result/%s/%s/%s.tif', date, experiment, filename),'WriteMode','append');
 end
+disp('Multiple image saved.');
 end

@@ -40,5 +40,6 @@ roiMatrix = roiMatrix(:,:,1:roiNum-1);
 roiMatrix = logical(roiMatrix);
 %%
 save(sprintf('result/%s/%s/data.mat', date, experiment), 'roiMatrix',...
-    'roiCo', '-append');
+    'roiCo', '-append','-nocompression');
+disp('Get ROI information finished.');
 end
