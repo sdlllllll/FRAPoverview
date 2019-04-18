@@ -55,6 +55,11 @@ INPUT_FRAP_INF = normalizedfrapinf;
 DISPLAY_LIST = 'all';
 drawh(imgs, roiCo, INPUT_FRAP_INF, DISPLAY_LIST, DATE, EXPERIMENT, CHANNEL);
 %%
+DISPLAY_LIST = [1,2,3,4,5,6,7,8];
+% DISPLAY_LIST = [9,10,11];
+FILENAME = 'hgrid1';
+h2grid(individualh,FILENAME,DISPLAY_LIST,DATE,EXPERIMENT,CHANNEL);
+%%
 % %% Ìí¼ÓÐÂµÄROI
 % add = [1,1,248,200];
 % [roiMatrix, roiCo] = addroi(roiMatrix, roiCo, DATE, EXPERIMENT, add);

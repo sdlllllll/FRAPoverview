@@ -68,4 +68,7 @@ for m=1:size(displaylist, 1)
         individualh(f,m).img = imread(sprintf('result/%s/%s/roi%dC%dh.tif', date, experiment, n, channel),f);
     end
 end
+save(sprintf('result/%s/%s/data.mat', date, experiment), 'individualh',...
+    '-append', '-nocompression');
+disp('Readable individual image saved.')
 end
