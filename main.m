@@ -1,4 +1,4 @@
-%% 批处理
+%% batch
 clear
 INDEX = {
     };
@@ -9,7 +9,7 @@ for U = T
     DATE = U{1};
     EXPERIMENT = U{2};
     CHANNEL = U{3};
-    %% 批处理命令
+    %% batch command
 %     load(sprintf('result/%s/%s/data.mat', DATE, EXPERIMENT));
 
     
@@ -20,39 +20,34 @@ DATE = '';
 EXPERIMENT = '';
 CHANNEL = ;
 
-%% 获取原始图像和ROI信息
+%% Read original image and ROI file.
 [roiimage, imgs, frame] = getrawimage(DATE, EXPERIMENT);
 [roiMatrix, roiCo] = getroi(roiimage, DATE, EXPERIMENT);
-%% 获取每帧的frap数据（ROI内之和）
+%% Statistic each fraps pixel data in ROI in sum.
 rawfrapinf = getrawfrap(imgs, roiMatrix, CHANNEL, DATE, EXPERIMENT);
-%% 归一化frap信息
+%% Normalize statistic results.
 normalizedfrapinf = normalizefrap(rawfrapinf, DATE, EXPERIMENT);
-%% 所有ROI的frap变化
-% normalizedfrapinf
+%% Show all ROI and FRAP changes in one big map.
 INPUT_FRAP_INF = normalizedfrapinf;
+
 drawmap(imgs, INPUT_FRAP_INF, CHANNEL, roiCo, DATE, EXPERIMENT,...
     'normalizedmap');
-%% 每个ROI的变化
-% normalizedfrapinf
+%% Show FRAP changes in each ROI in individual figure.
 INPUT_FRAP_INF = normalizedfrapinf;
-drawindividual(imgs, INPUT_FRAP_INF, CHANNEL, roiCo, DATE, EXPERIMENT);
 
-%% 将ROI图像拼接到一副图中，列表内为需要拼接的ROI
+drawindividual(imgs, INPUT_FRAP_INF, CHANNEL, roiCo, DATE, EXPERIMENT);
+%% Splicing each ROI changing videos into one video, up to 16.
+% DISPLAY_LIST = [1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16];
 DISPLAY_LIST = [1;2;3;4;5;6;7;8;9];
+
 videogrid(imgs, roiCo, DISPLAY_LIST, CHANNEL, 'grid', DATE, EXPERIMENT);
-%% 将ROI和对应的FRAP信息输出到一组4维tif图像中
+%% Show ROI changing video and FRAP statistic result in one video.
 INPUT_FRAP_INF = normalizedfrapinf;
 DISPLAY_LIST = 'all';
+
 drawh(imgs, roiCo, INPUT_FRAP_INF, DISPLAY_LIST, DATE, EXPERIMENT, CHANNEL);
-%%
+%% Splicing each ROI changing videos and FRAP statistic results in one video, up to 8.
 DISPLAY_LIST = [1,2,3,4,5,6,7,8];
 FILENAME = 'hgrid1';
+
 h2grid(individualh,FILENAME,DISPLAY_LIST,DATE,EXPERIMENT,CHANNEL);
-%%
-% %% 添加新的ROI
-% add = [1,1,248,200];
-% [roiMatrix, roiCo] = addroi(roiMatrix, roiCo, DATE, EXPERIMENT, add);
-% %%
-% cuttedimgs = cutimg(imgs, diroiMatrix, roiCo, 10, CHANNEL, DATE,...
-%     EXPERIMENT);
-% diroiMatrix = dilateroi(roiMatrix, 10, DATE, EXPERIMENT);
