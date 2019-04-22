@@ -1,4 +1,4 @@
-function [imgs, roiimage] = getrawimage(date,experiment)
+function [imgs,roiimage] = getrawimage(date,experiment)
 % Input date and experiment name, return original images and ROI image.
 % 
 % [imgs, roiimage] = getrawimage(date,experiment)
