@@ -21,10 +21,10 @@ EXPERIMENT = '';
 CHANNEL = ;
 
 %% Read original image and ROI file.
-[roiimage, imgs, frame] = getrawimage(DATE, EXPERIMENT);
-[roiMatrix, roiCo] = getroi(roiimage, DATE, EXPERIMENT);
+[imgs,roiimage] = getrawimage(DATE,EXPERIMENT);
+[roiStack,roiCo] = getroi(roiimage,DATE,EXPERIMENT);
 %% Statistic each fraps pixel data in ROI in sum.
-rawfrapinf = getrawfrap(imgs, roiMatrix, CHANNEL, DATE, EXPERIMENT);
+rawfrapinf = getrawfrap(imgs, roiStack, CHANNEL, DATE, EXPERIMENT);
 %% Normalize statistic results.
 normalizedfrapinf = normalizefrap(rawfrapinf, DATE, EXPERIMENT);
 %% Show all ROI and FRAP changes in one big map.
