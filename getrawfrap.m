@@ -14,5 +14,5 @@ for u = 1:t
 end
 save(sprintf('result/%s/%s/data.mat',date,experiment),'rawfrapinf',...
     '-append','-nocompression');
-fprintf('Statistic FRAP finished./n');
+fprintf('Statistic FRAP finished.\n');
 end
