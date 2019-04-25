@@ -1,6 +1,8 @@
 function drawmap(imgs, input, channel, roiCo, date, experiment, name)
-%%
+% Show all FRAP changes in one figure and mark ROIs on the photo.
+
 fig = figure('Name', sprintf('%s-%s-%s', date, experiment, name));
+fig.Visible = 'off';
 subplot(1, 2, 1);
 imshow(imgs(:, :, 1, channel),[]);
 axis on;
@@ -15,8 +17,7 @@ plot(input);
 legend1 = legend(string(roiCo(:,7)));
 set(legend1,...
     'Position',[0.907779875494835 0.660119047619048 0.114285714285714 0.26547619047619]);
-close;
-%%
 saveas(fig, sprintf('result/%s/%s/%s.fig', date, experiment, name));
+close
 disp('Map saved.');
 end
