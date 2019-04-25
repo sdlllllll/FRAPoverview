@@ -36,17 +36,22 @@ drawmap(imgs, INPUT_FRAP_INF, CHANNEL, roiCo, DATE, EXPERIMENT,...
 INPUT_FRAP_INF = normalizedfrapinf;
 
 drawindividual(imgs, INPUT_FRAP_INF, CHANNEL, roiCo, DATE, EXPERIMENT);
-%% Splicing each ROI changing videos into one video, up to 16.
+%%
+% Splicing each ROI changing videos into one video, up to 16.
 % DISPLAY_LIST = [1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16];
 DISPLAY_LIST = [1;2;3;4;5;6;7;8;9];
 
 videogrid(imgs, roiCo, DISPLAY_LIST, CHANNEL, 'grid', DATE, EXPERIMENT);
-%% Show ROI changing video and FRAP statistic result in one video.
+%%
+% Show ROI changing video and FRAP statistic result in one video.
 INPUT_FRAP_INF = normalizedfrapinf;
 DISPLAY_LIST = 'all';
 
-drawh(imgs, roiCo, INPUT_FRAP_INF, DISPLAY_LIST, DATE, EXPERIMENT, CHANNEL);
-%% Splicing each ROI changing videos and FRAP statistic results in one video, up to 8.
+individualh = drawh(imgs, roiCo, INPUT_FRAP_INF, DISPLAY_LIST, DATE,...
+    EXPERIMENT, CHANNEL);
+%%
+% Splicing each ROI changing videos and FRAP statistic results in one
+% video, up to 8.
 DISPLAY_LIST = [1,2,3,4,5,6,7,8];
 FILENAME = 'hgrid1';
 

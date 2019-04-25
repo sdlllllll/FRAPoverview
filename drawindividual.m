@@ -1,7 +1,9 @@
 function drawindividual(imgs, data, channel, roiCo, date, experiment)
-%%
+% Show each ROIs FRAP changes in seprate figure.
+
 for r = 1:size(data,2)
     fig = figure('Name', sprintf('%s-%s-roi%d',date, experiment, r));
+    fig.Visible = 'off';
 %     set(fig, 'Visible', 'off');
     subplot(1, 2, 1);
     imshow(imgs(:, :, 1, channel), []);

@@ -1,6 +1,8 @@
 function h2grid(individualh,filename, displaylist, date, experiment, channel)
-%%
-if displaylist == 'all'
+% Display up to 8 FRAP change videos and statistic information
+% in one video.
+
+if strcmp(displaylist,'all')
     displaylist = (1:size(individualh,2));
 end
 frame = size(individualh,1);

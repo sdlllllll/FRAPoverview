@@ -1,6 +1,10 @@
 function videogrid(imgs,roiCo,displaylist,channel,filename,date,experiment)
+% Display up to 16 FRAP change videos in one video.
+
 t = size(imgs,3);
 rgbgrid = zeros(40,40,3,t,16);
+if strcmp(displaylist,'all')
+    displaylist = (1:size(roiCo,1))';
 for m=1:size(displaylist,1)
     n=displaylist(m);
     if (roiCo(n,3)>40) || (roiCo(n,4)>40)
@@ -23,7 +27,6 @@ bigimg = [
     rgbgrid(:,:,:,:,5),rgbgrid(:,:,:,:,6),rgbgrid(:,:,:,:,7),rgbgrid(:,:,:,:,8);
     rgbgrid(:,:,:,:,9),rgbgrid(:,:,:,:,10),rgbgrid(:,:,:,:,11),rgbgrid(:,:,:,:,12);
     rgbgrid(:,:,:,:,13),rgbgrid(:,:,:,:,14),rgbgrid(:,:,:,:,15),rgbgrid(:,:,:,:,16);];
-%%
 for m = 1:size(bigimg,4)
 imwrite(bigimg(:,:,:,m),sprintf('result/%s/%s/%s.tif', date, experiment, filename),'WriteMode','append');
 end
