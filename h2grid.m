@@ -3,7 +3,7 @@ function h2grid(individualh,filename, displaylist, date, experiment, channel)
 % in one video.
 
 if strcmp(displaylist,'all')
-    displaylist = (1:size(individualh,2));
+    displaylist = (1:size(individualh,2))';
 end
 frame = size(individualh,1);
 gridh = zeros(720,1280,3,frame);
